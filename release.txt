@@ -5,8 +5,8 @@ docker run -d -p 8000:8000 --name pokeapi-container-elvis --env-file .env pokeap
 az acr login --name acrpokequeueelvisdev
 
 docker tag pokeapi-elvis:latest acrpokequeueelvisdev.azurecr.io/pokeapi-elvis:latest
-docker tag pokeapi-elvis:latest acrpokequeueelvisdev.azurecr.io/pokeapi-elvis:0.1.0
+docker tag pokeapi-elvis:latest acrpokequeueelvisdev.azurecr.io/pokeapi-elvis:0.6.0
 
 docker push acrpokequeueelvisdev.azurecr.io/pokeapi-elvis:latest
-docker push acrpokequeueelvisdev.azurecr.io/pokeapi-elvis:0.1.0
+docker push acrpokequeueelvisdev.azurecr.io/pokeapi-elvis:0.6.0
 

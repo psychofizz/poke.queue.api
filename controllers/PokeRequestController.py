@@ -51,9 +51,24 @@ async def insert_pokemon_request( pokemon_request: PokemonRequest) -> dict:
 
         return result_dict
     except Exception as e:
-        logger.error( f"Error inserting report reques {e}" )
+        print( f"Error inserting report reques {e}" )
         raise HTTPException( status_code=500 , detail="Internal Server Error" )
-
+    
+async def delete_pokemon_report(id: int) -> dict:
+    try:
+        query = "DELETE FROM pokequeue.requests WHERE id = ?"
+        params = (id,)
+        result = await execute_query_json(query, params)
+        blob = ABlob()
+        ABlob().delete_csv(id)
+        if result:  
+            return {"status": "success", "message": "Reporte borrado exitosamente"}
+        else:
+            raise HTTPException(status_code=404, detail="Report not found")
+        
+    except Exception as e:
+        logger.error(f"Error deleting report request: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
 
 async def get_all_request() -> dict:
     query = """

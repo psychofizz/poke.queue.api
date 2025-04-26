@@ -5,7 +5,8 @@ import logging
 import json
 import asyncio # Asegúrate de importar asyncio si usas async/await directamente
 
-load_dotenv()
+load_dotenv(override=True)
+
 
 # Configurar logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
