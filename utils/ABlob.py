@@ -19,7 +19,7 @@ class ABlob:
         blob_name = f"poke_report_{id}.csv"
         sas_token = generate_blob_sas(
             account_name=self.blob_service_client.account_name,
-            container_name=BLOB_NAME,
+            container_name=AZURE_STORAGE_CONTAINER,
             blob_name=blob_name,
             account_key=self.blob_service_client.credential.account_key,
             permission=BlobSasPermissions(read=True),

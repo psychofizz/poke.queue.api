@@ -58,7 +58,7 @@ async def delete_pokemon_report(id: int) -> dict:
     try:
         query = "DELETE FROM pokequeue.requests WHERE id = ?"
         params = (id,)
-        result = await execute_query_json(query, params)
+        result = await execute_query_json(query, params, True)
         blob = ABlob()
         ABlob().delete_csv(id)
         if result:  
